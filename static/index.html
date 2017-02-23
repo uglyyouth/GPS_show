@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>GPS数据展示</title>
+	<meta name="author" content="zhangyy" />
+	<meta name="description" content="仅仅用于教学" />
+
+
+
+	<link rel="stylesheet" type="text/css" href="jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="examples.css" />
+
+	<link rel="stylesheet" type="text/css" href="dist/semantic.css">
+	<link rel="stylesheet" type="text/css" href="dist/animate.css">
+	<link rel="stylesheet" type="text/css" href="dist/components/list.css">
+
+	<script src="assets/library/jquery.min.js"></script>
+	<script src="dist/semantic.js"></script>
+
+
+	<style>
+
+	/* Style for our header texts
+	* --------------------------------------- */
+	h1{
+		font-size: 4em;
+		font-family: arial,helvetica;
+		color: #fff;
+		margin:0;
+		opacity:0.4;
+	}
+	section0 h3,{
+		color: #fff;
+		opacity:0.2;
+	}
+	.intro p{
+		color: #fff;
+	}
+
+	listp{
+		color: #fff;
+
+	}
+
+	.Absolute-Center {
+	  margin: auto;
+	  position: absolute;
+	  top: 0; left: 0; bottom: 0; right: 0;
+	}
+
+	/* Centered texts in each section
+	* --------------------------------------- */
+	.section{
+		text-align:center;
+		/*display: none;*/
+	}
+
+	/* Overwriting styles for control arrows for slides
+	* --------------------------------------- */
+	.controlArrow.prev {
+		left: 50px;
+	}
+	.controlArrow.next{
+		right: 50px;
+	}
+
+	.fp-slidesNav.bottom{
+		bottom: 25px;
+	}
+
+
+
+	#myVideo{
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		top:0;
+		right:0;
+		width: 100%;
+		height: 100%;
+		background-size: 100% 100%;
+ 		background-color: black; /* in case the video doesn't fit the whole page*/
+
+  		background-position: center center;
+  		background-size: contain;
+   		object-fit: cover; /*cover video background */
+   		z-index:3;
+	}
+	#myVideo1{
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		top:0;
+		right:0;
+		width: 100%;
+		height: 100%;
+		background-size: 100% 100%;
+ 		background-color: black; /* in case the video doesn't fit the whole page*/
+
+  		background-position: center center;
+  		background-size: contain;
+   		object-fit: cover; /*cover video background */
+   		/*z-index:3;*/
+	}
+	#section0 .layer{
+		position: absolute;
+		z-index: 10;
+		width: 100%;
+		left: 0;
+		top: 50%;
+
+		/* 
+		* Preventing flicker on some browsers 
+		* See http://stackoverflow.com/a/36671466/1081396  or issue #183
+		*/
+		-webkit-transform: translate3d(0,0,0);
+		-ms-transform: translate3d(0,0,0);
+		transform: translate3d(0,0,0);
+	}
+
+/*	#section2 .layer{
+		position: absolute;
+		z-index: 4;
+		width: 100%;
+		left: 0;
+		top: 50%;
+
+		 
+		* Preventing flicker on some browsers 
+		* See http://stackoverflow.com/a/36671466/1081396  or issue #183
+		
+		-webkit-transform: translate3d(0,0,0);
+		-ms-transform: translate3d(0,0,0);
+		transform: translate3d(0,0,0);
+	}*/
+	/*solves problem with overflowing video in Mac with Chrome */
+	#section0{
+		overflow: hidden;
+		position: relative;
+		z-index: 15;
+	}
+/*	#section0{
+		background-image: url(imgs/1.jpg);
+		filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";  
+-moz-background-size:100% 100%;  
+    background-size:100% 100%; 
+	}*/
+	#section0 h1,
+	{
+		top: 50%;
+		transform: translateY(-50%);
+		position: relative;
+	}
+	#section1 .intro,
+	{
+		top: 50%;
+		transform: translateY(-50%);
+		position: relative;
+	}
+
+/*	#section1{
+				background-image: url(imgs/2.jpg);
+				filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";  
+		-moz-background-size:100% 100%;  
+		    background-size:100% 100%; 
+	}*/
+
+	#section2{
+		/*background-image: url(imgs/bg3.jpg);*/
+		/*padding: 6% 0 0 0;*/
+	}
+/*	#section3{
+		background-image: url(imgs/bg4.jpg);
+		padding: 6% 0 0 0;
+	}
+	#section3 h1{
+		color: #000;
+	}*/
+
+	#slide1{
+		background-image: url(imgs/2.png);
+		/*padding: 6% 0 0 0;*/
+	}
+	#slide2{
+		background-image: url(imgs/2.png);
+		/*padding: 6% 0 0 0;*/
+	}
+	.bmp1{
+		z-index: 10;
+		position: relative;
+/*		text-align: center;
+		left: 50%;
+		transform: translateX(-50%);*/
+	}
+	.inputform{
+		width: 300px;
+		/*height:400px*/
+		left: 50%;
+		top: 50%;
+		transform: translate3d(-50%, 50%, 0);
+	}
+	#echa3{
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%)
+	}
+	#fullpage {
+		position: relative;
+		/*z-index: 20;*/
+	}
+	</style>
+
+
+	<!-- <script src="dist/jquery.min.js"></script> -->
+	<script src="dist/jquery-ui.min.js"></script>
+
+	<script type="text/javascript" src="vendors/scrolloverflow.js"></script>
+
+	<script type="text/javascript" src="jquery.fullPage.js"></script>
+	<script type="text/javascript" src="examples.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+	<script src="dist/echarts.min.js"></script>
+	<script src="dist/china.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=MLj8pWKABUOegfsZAzyE63hMY5YVlUGf"></script>
+	 <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				anchors: ['firstPage', 'secondPage', '3rdPage'],
+				sectionsColor: ['#001f3f', '#001f3f', '#001f3f'],
+				navigation: true,
+				slidesNavigation: true,
+				navigationPosition: 'right',
+				navigationTooltips: ['First page', 'Second page', 'Third and last page'],
+
+				// afterLoad: function(anchorLink, index){
+				// 		console.log(index)
+				//     //using index
+				//     // if(index == 3){
+				//     	// $('.section').css('display', 'none')
+				//     	// $('.section')[index - 1].style.display = 'block'
+				//         // alert("Section 3 ended loading");
+				//     // }
+
+				//     //using anchorLink
+				//     if(anchorLink == 'secondSlide'){
+				//         alert("Section 2 ended loading");
+				//     }
+				// }
+			});
+		});
+	</script>
+
+
+
+</head>
+<body>
+
+<ul id="menu">
+    <li data-menuanchor="firstPage" class="active"><a href="#firstPage">概览-运力分布</a></li>
+    <li data-menuanchor="secondPage"><a href="#secondPage">TOP榜单</a></li>
+    <li data-menuanchor="3rdPage"><a href="#3rdPage">查询</a></li>
+</ul>
+
+
+<div id="fullpage">
+
+	<div class="section " id="section0">
+		<video id="myVideo" loop muted data-autoplay>
+			<source src="imgs/2.mp4" type="video/mp4">
+			<!-- <source src="imgs/flowers.webm" type="video/webm"> -->
+		</video>
+
+		<div class="layer">
+			<!-- <h1>fullPage.js videos</h1> -->
+			<div class="ui equal width stackable internally celled grid">
+			  <div class="center aligned row">
+
+			    <div class="column">
+			    </br>
+			      <h1 class="animated slideInUp">GPS运力展示</h1>
+			      <h3 class="animated slideInUp">展示综合运力情况，TOP榜单以及路径查询</h3>
+			      <h3 class="animated slideInUp">仅作为作业展示，请勿用于商用</h3>
+			      <h3 class="animated slideInUp">by 张依依,陈志贤</h3>
+			      <h3 class="animated slideInUp">鸣谢 贺涛</h3>
+			    </div>
+
+			    <div class="column animated zoomIn">
+					  <div id="echa1" style="width: 600px;height:400px;"></div>
+			  	</div>
+
+			  </div>
+			</div>
+		</div>
+ 
+	</div>
+	<div class="section" id="section1">
+	        <div class="slide" id="slide1" data-anchor="slide1">
+	    		<div class="intro animated slideInUp">
+
+	    			<h1>里程数TOP 5</h1>
+	    			</br>
+	    			<div class="listp">
+	    				<div class="ui middle aligned animated list">
+	    				  <div class="item">
+	    				    <img class="ui avatar image" src="imgs/n1.png">
+	    				    <div class="content">
+	    				      <p>top-1st</p>
+	    				    </div>
+	    				  </div>
+	    				  <div class="item">
+	    				    <img class="ui avatar image" src="imgs/n2.png">
+	    				    <div class="content listbutton" data-name="name2">
+	    				      <p>top-2nd</p>
+	    				    </div>
+	    				  </div>
+	    				  <div class="item">
+	    				    <img class="ui avatar image" src="imgs/n3.png">
+	    				    <div class="content">
+	    				      <p>top3th</p>
+	    				    </div>
+	    				  </div>
+	    				  <div class="item">
+	    				    <img class="ui avatar image" src="imgs/n4.png">
+	    				    <div class="content">
+	    				      <p>top 4th</p>
+	    				    </div>
+	    				  </div>
+	    				  <div class="item">
+	    				    <img class="ui avatar image" src="imgs/n5.png">
+	    				    <div class="content">
+	    				      <p>top 5th</p>
+	    				    </div>
+	    				  </div>
+	    				</div>
+	    			</div>
+
+		    		<div class="ui dimmer">
+		    		    <div class="content">
+		    		      <div class="center">
+
+
+		    		      <h3 class="ui inverted icon header">
+		    		      	<div class="ui list">
+		    		      	  <div class="item">
+		    		      	    <!-- <i class="users icon"></i> -->
+		    		      	    <div class="content">
+		    		      	      Semantic UI
+		    		      	    </div>
+		    		      	  </div>
+		    		      	  <div class="item">
+		    		      	    <!-- <i class="marker icon"></i> -->
+		    		      	    <div class="content">
+		    		      	      New York, NY
+		    		      	    </div>
+		    		      	  </div>
+		    		      	  <div class="item">
+		    		      	    <!-- <i class="mail icon"></i> -->
+		    		      	    <div class="content">
+		    		      	      jack@semantic-ui.com
+		    		      	    </div>
+		    		      	  </div>
+		    		      	  <div class="item">
+		    		      	    <!-- <i class="linkify icon"></i> -->
+		    		      	    <div class="content">
+		    		      	      semantic-ui.com
+		    		      	    </div>
+		    		      	  </div>
+		    		      	</div> 
+		    		      	</h3>
+		    		      	<button class="ui icon button inverted rebutton">
+		    		      	  <i class="reply icon"></i>
+		    		      	</button>
+		    		      	
+
+
+		    		      </div>
+		    		    </div>
+		    		</div>
+
+	    		</div>
+	    	</div>
+
+	        <div class="slide" id="slide2" data-anchor="slide2">
+		        <h1>统计列表</h1>
+    				<div class="ui equal width stackable internally celled grid">
+    				  <div class="center aligned row">
+
+    				    <div class="column">
+    				    	<div id="echa2" style="width: 600px;height:400px;;"></div>
+    				    </div>
+    			        <div class="column animated zoomIn">
+	    				    <div id="echa22" style="width: 600px;height:400px;"></div>
+    			    		 
+    			      	</div>
+
+    				  </div>
+    				</div>
+	    	</div>
+
+
+
+	</div>
+	<div class="section" id="section2">
+		<video id="myVideo1" loop muted data-autoplay>
+			<source src="imgs/3.mp4" type="video/mp4">
+		</video>
+
+		<div class="layer">
+
+			<div class="ui equal width stackable internally celled grid">
+			  <div class="center aligned row">
+
+			    <div class="column">
+			    	<form class="ui form inputform">
+			    	  <div class="field">
+			    	    <label>车牌号</label>
+			    	    <input type="text" name="first-name" placeholder="First Name">
+			    	  </div>
+			    	  <button class="ui button" type="submit">查询</button>
+			    	</form>
+			    </div>
+
+		        <div class="column animated zoomIn">
+		    		  <div id="echa3" style="width: 600px;height:400px;"></div>
+		      	</div>
+
+			  </div>
+			</div>
+
+		</div>
+
+
+	</div>
+</div>
+<script type="text/javascript" src="page1.js"></script>
+<script type="text/javascript" src="page2.js"></script>
+<script type="text/javascript" src="page22.js"></script>
+<script type="text/javascript" src="page3.js"></script>
+
+
+</body>
+</html>

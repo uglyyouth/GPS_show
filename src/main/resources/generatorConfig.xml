@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+ 	<classPathEntry
+		location="/home/honeycc/.m2/repository/mysql/mysql-connector-java/5.1.36/mysql-connector-java-5.1.36.jar" />
+	<context id="context1" targetRuntime="MyBatis3" >  
+    <!-- <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"></plugin>  
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>   -->
+       
+  <plugin type="com.zju.atta.model.page.MySQLPaginationPlugin"  />
+
+
+	 <commentGenerator>
+            <property name="suppressDate" value="false" />    
+        </commentGenerator>    
+    
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"    
+            connectionURL="jdbc:mysql://127.0.0.1:3306/employeess?characterEncoding=utf8"
+            userId="root" password="362141">
+        </jdbcConnection>    
+    
+        <javaTypeResolver> 
+            <property name="forceBigDecimals" value="false" />    
+        </javaTypeResolver>    
+    
+  
+        <javaModelGenerator targetPackage="com.zju.atta.model"
+            targetProject="src/main/java">
+            <property name="enableSubPackages" value="false" />    
+            <property name="trimStrings" value="true" />    
+        </javaModelGenerator>    
+    
+        <sqlMapGenerator targetPackage="mapper"
+            targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false" />    
+        </sqlMapGenerator> 
+    
+        <javaClientGenerator type="XMLMAPPER"    
+            targetPackage="com.zju.atta.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false" />    
+        </javaClientGenerator>    
+   
+    <table tableName="employees" />
+
+  </context>
+</generatorConfiguration>
